@@ -1,0 +1,18 @@
+<mat-grid-list cols="1" rowHeight="200px">
+    <mat-grid-tile>
+        <mat-card class="file-upload-card">
+            <mat-card-title>File Upload</mat-card-title>
+            <mat-card-content>
+                <input type="file" #FileInput id="file" accept=".csv" (change)="handleFileInput($event)" />
+                <div class="pull-right">
+                    <button mat-raised-button color="warn" style="margin-right: 5px" (click)="onClear()">Clear</button>
+                    <button mat-raised-button color="primary" type="button" [disabled]="!selectedFile" (click)="onUpload()">Upload</button>
+                </div>
+                <div *ngIf="isUploading" class="progress">
+                    <mat-progress-bar color="primary" mode="determinate" value="{{progress.percentage}}">
+                    </mat-progress-bar>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
